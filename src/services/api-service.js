@@ -2,7 +2,7 @@ export default class APIService {
   _apiKey = process.env.REACT_APP_API_KEY;
   _apiBase = 'https://api.openai.com/v1/engines';
 
-  _engine = '/text-curie-001/completions'
+  // _engine = '/text-curie-001/completions'
 
   formData = (prompt) => {
     const data = {
@@ -17,8 +17,8 @@ export default class APIService {
     return data;
   }
 
-  getData = async (data) => {
-    const res = await fetch(`${this._apiBase}${this._engine}`, {
+  getData = async (engine, data) => {
+    const res = await fetch(`${this._apiBase}/${engine}/completions`, {
       method: 'POST',
       headers: {
         "Content-Type": "application/json",
@@ -29,5 +29,4 @@ export default class APIService {
 
     return await res.json();
   };
-
 }

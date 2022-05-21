@@ -26,9 +26,9 @@ export default class App extends Component {
         }
     }
 
-    onPromptAdded = (prompt) => {
+    onPromptAdded = (engine, prompt) => {
         const promptRequest = this.apiService.formData(prompt)
-        const sendPrompt = this.apiService.getData(promptRequest)
+        const sendPrompt = this.apiService.getData(engine, promptRequest)
         
         sendPrompt
         .then(response => (this.setState((state) => {
@@ -44,7 +44,8 @@ export default class App extends Component {
                 ]
             };
         }))
-        )
+        ).catch(error => window.alert('Ooops! Are you still connected?'))
+        //simple error handler
     }
 
     render() {

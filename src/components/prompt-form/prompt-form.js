@@ -5,24 +5,40 @@ import './prompt-form.css';
 export default class PromptForm extends Component {
     
     state = {
-        prompt: ''
+        engine: 'text-curie-001',
+        prompt: '',
     };
+
+    onSelectBoxChange = (e) => {
+        this.setState({
+            engine: e.target.value
+        })
+    }
 
     onTextAreaChange = (e) => {
         this.setState({
-          prompt: e.target.value
+          prompt: e.target.value,
         })
     };
 
     onSubmit = (e) => {
         e.preventDefault();
-        const { prompt } = this.state;
-        this.setState({ prompt: '' });
+        const { engine, prompt } = this.state;
         const cb = this.props.onPromptAdded || (() => {});
-        cb(prompt);     
+        cb(engine, prompt);
+        const engineLastState = 
+        this.setState({ prompt: '' });  
     };
 
     render() {
+
+        const engines = [
+            'text-curie-001',
+            'text-davinci-002',
+            'text-babbage-001',
+            'text-ada-001'
+        ]
+
         return (
             <form onSubmit={this.onSubmit}>
                 <div className="form-floating proposals">
@@ -39,6 +55,12 @@ export default class PromptForm extends Component {
                     </label>
                 </div>
                 <div className="d-grid gap-2 d-md-flex justify-content-md-end btn-position">
+                    <select value={this.state.engine} className='form-select'
+                    onChange={this.onSelectBoxChange}>
+                        {engines.map((engine) => (
+                            <option key={engine}>{engine}</option>
+                        ))}        
+                    </select>
                     <button className="btn btn-primary" type="submit">send prompt</button>
                 </div>
             </form>

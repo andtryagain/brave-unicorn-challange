@@ -9,4 +9,5 @@
 .btn-position {
     margin-top: 10px;
     margin-right: 0;
+    white-space: nowrap;
 }
