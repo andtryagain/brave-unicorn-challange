@@ -1,0 +1,13 @@
+td {
+    vertical-align: top;
+}
+
+.coll1 {
+    font-weight: bold;
+    padding: 10px;
+}
+
+.coll2 {
+    padding: 10px;
+    word-break: break-all;
+}

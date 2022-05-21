@@ -1,0 +1,8 @@
+h1 {
+    margin-left: 10px;
+    font-weight: bold;
+}
+.app {
+    margin: 4rem auto 0 auto;
+    max-width: 500px;
+}
