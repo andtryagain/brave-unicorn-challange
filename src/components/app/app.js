@@ -6,7 +6,6 @@ import APIService from '../../services/api-service';
 import './app.css'
 
 export default class App extends Component {
-    
     initId = Math.floor(Math.random() * 100) * 100;
 
     apiService = new APIService()
@@ -27,10 +26,37 @@ export default class App extends Component {
         }
     }
 
+    clearResponseList = () => {
+        window.localStorage.setItem('state', null);
+        this.setState({
+            promptsAndResponses: []
+        })
+    }
+
+    responseHeader = () => {
+        return (
+            <div className='response-header'>
+                <div className='row'>
+                    <div className='col'>
+                        <h4>responses</h4>
+                    </div>
+                    <div className='col justify-content-md-end 
+                    clear-response-list'>
+                        <button
+                            className='btn btn-danger' 
+                            type='button'
+                            onClick= { this.clearResponseList } >
+                            clear list
+                        </button>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
     onPromptAdded = (engine, prompt) => {
         window.localStorage.setItem('state', JSON.stringify(this.state));
         // memorizing state from localstorage
-        // window.localStorage.setItem('state', null);
 
         const promptRequest = this.apiService.formData(prompt)
         const sendPrompt = this.apiService.getData(engine, promptRequest)
@@ -56,13 +82,14 @@ export default class App extends Component {
     }
 
     render() {
-        
         return (
             <div className='app'>
                 <h1>fun with AI</h1>
                 <PromptForm onPromptAdded = { this.onPromptAdded }/>
+                <this.responseHeader />
                 <PromptResponseList items = { this.state.promptsAndResponses }/>
             </div>
         );
     };
 }
+

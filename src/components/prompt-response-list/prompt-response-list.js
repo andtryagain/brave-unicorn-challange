@@ -17,8 +17,9 @@ export default class PromptResponseList extends Component {
         }).reverse()
 
         return(
-            <div>
-            <h4>responses</h4>
+            <div className='prompt-response-list'>
+
+    
                 { elements }  
             </div>
         )
