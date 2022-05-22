@@ -3,15 +3,6 @@ h4 {
     margin-left: 10px;
 }
 
-.response-header {
-    margin-top: 20px;
-    vertical-align: middle;
-}
-
-.clear-response-list{
-    text-align: right;
-}
-
 .responses {
     border-radius: 5px;
     background-color:#DCDCDC;

@@ -6,3 +6,12 @@ h1 {
     margin: 4rem auto 0 auto;
     max-width: 600px;
 }
+
+.response-header {
+    margin-top: 20px;
+    vertical-align: middle;
+}
+
+.clear-response-list{
+    text-align: right;
+}
