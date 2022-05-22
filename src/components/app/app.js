@@ -63,6 +63,7 @@ export default class App extends Component {
         
         sendPrompt
         .then(response => (this.setState((state) => {
+            // console.log(response)
             //getting the response first then add it to array
             const textResponse = response.choices[0].text;
             //getting response text
@@ -76,7 +77,7 @@ export default class App extends Component {
             };
         }))
         ).catch(error => window.alert(
-            `Ooops! Something wrong...\nError: ${error}`)
+            `Ooops! Something wrong...\n${error}`)
             )
         // simple error handler
     }
