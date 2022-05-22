@@ -1,5 +1,5 @@
 export default class APIService {
-  _apiKey = process.env.REACT_APP_OPENAI_SECRETd;
+  _apiKey = process.env.REACT_APP_OPENAI_SECRET;
   _apiBase = 'https://api.openai.com/v1/engines';
 
   // _engine = '/text-curie-001/completions'
@@ -22,13 +22,13 @@ export default class APIService {
       method: 'POST',
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer asdasdda`,
+        Authorization: `Bearer ${this._apiKey}`,
       },
       body: JSON.stringify(data),
     })
 
     if(res.status === 401){
-      throw new Error(`Incorrect API key provided: ${this._apiKey}. You can find your API key at https://beta.openai.com.`) 
+      throw new Error(`Incorrect API key provided. You can find your API key at https://beta.openai.com.`) 
     }
 
     return await res.json();
