@@ -55,30 +55,32 @@ export default class App extends Component {
     }
 
     onPromptAdded = (engine, prompt) => {
-        window.localStorage.setItem('state', JSON.stringify(this.state));
-        // memorizing state from localstorage
-
         const promptRequest = this.apiService.formData(prompt)
         const sendPrompt = this.apiService.getData(engine, promptRequest)
         
         sendPrompt
-        .then(response => (this.setState((state) => {
-            // console.log(response)
-            //getting the response first then add it to array
-            const textResponse = response.choices[0].text;
-            //getting response text
-            const newPrompt = this.createPromptAndProposal(prompt, textResponse);
-
-            return {
-                promptsAndResponses: [
-                    ...state.promptsAndResponses,
-                    newPrompt
-                ]
-            };
-        }))
-        ).catch(error => window.alert(
+        .then(response => (this.setState((state) => 
+            {
+                const textResponse = response.choices[0].text;
+                // getting response text
+                const newPrompt = this.createPromptAndProposal(prompt, textResponse);
+                // getting prompt and then...(a) 
+                window.localStorage.setItem('state', JSON.stringify({promptsAndResponses: [...state.promptsAndResponses, newPrompt]}));
+                // memorizing state - - - - - - - - - - - - - - - - - ^ forming object
+                
+                return {
+                    promptsAndResponses: [
+                        ...state.promptsAndResponses,
+                        newPrompt
+                        // ...place them in state (a) 
+                    ]
+                };
+            }
+        ))
+        )
+        .catch(error => window.alert(
             `Ooops! Something wrong...\n${error}`)
-            )
+        )
         // simple error handler
     }
 
