@@ -7,16 +7,17 @@ import './app.css'
 
 export default class App extends Component {
     
-    initId = 100;
+    initId = Math.floor(Math.random() * 100) * 100;
 
     apiService = new APIService()
-
-    state = {
-        promptsAndResponses: [
-            // { id: 0, prompt: 'test0', response: 'test1'},
-            // { id: 1, prompt: 'test0', response: 'test1'},
-        ]
-    };
+    
+    constructor(props) {
+        super(props);
+        this.state = JSON.parse(window.localStorage.getItem('state')) || {
+            // last state from localstorage or new state
+            promptsAndResponses: []
+        };
+    }
 
     createPromptAndProposal(prompt, response){        
         return {
@@ -27,6 +28,10 @@ export default class App extends Component {
     }
 
     onPromptAdded = (engine, prompt) => {
+        window.localStorage.setItem('state', JSON.stringify(this.state));
+        // memorizing state from localstorage
+        // window.localStorage.setItem('state', null);
+
         const promptRequest = this.apiService.formData(prompt)
         const sendPrompt = this.apiService.getData(engine, promptRequest)
         
@@ -44,17 +49,19 @@ export default class App extends Component {
                 ]
             };
         }))
-        ).catch(error => window.alert('Ooops! Are you still connected?'))
-        //simple error handler
+        ).catch(error => window.alert(
+            `Ooops! Something wrong...\nError: ${error}`)
+            )
+        // simple error handler
     }
 
     render() {
-        const list = this.state.promptsAndResponses;
+        
         return (
             <div className='app'>
                 <h1>fun with AI</h1>
                 <PromptForm onPromptAdded = { this.onPromptAdded }/>
-                <PromptResponseList items = { list }/>
+                <PromptResponseList items = { this.state.promptsAndResponses }/>
             </div>
         );
     };
