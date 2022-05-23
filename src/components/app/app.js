@@ -10,8 +10,8 @@ export default class App extends Component {
 
     apiService = new APIService()
     
-    constructor(props) {
-        super(props);
+    constructor() {
+        super();
         this.state = JSON.parse(window.localStorage.getItem('state')) || {
             // last state from localstorage or new state
             promptsAndResponses: []
