@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/brave-unicorn-challange/static/css/main.7b77c32b.css",
-    "main.js": "/brave-unicorn-challange/static/js/main.9853d085.js",
+    "main.js": "/brave-unicorn-challange/static/js/main.eb9f26e3.js",
     "index.html": "/brave-unicorn-challange/index.html",
     "main.7b77c32b.css.map": "/brave-unicorn-challange/static/css/main.7b77c32b.css.map",
-    "main.9853d085.js.map": "/brave-unicorn-challange/static/js/main.9853d085.js.map"
+    "main.eb9f26e3.js.map": "/brave-unicorn-challange/static/js/main.eb9f26e3.js.map"
   },
   "entrypoints": [
     "static/css/main.7b77c32b.css",
-    "static/js/main.9853d085.js"
+    "static/js/main.eb9f26e3.js"
   ]
 }
