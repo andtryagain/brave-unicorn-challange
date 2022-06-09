@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/react-gh-pages/static/css/main.7b77c32b.css",
-    "main.js": "/react-gh-pages/static/js/main.d613a8cb.js",
-    "index.html": "/react-gh-pages/index.html",
-    "main.7b77c32b.css.map": "/react-gh-pages/static/css/main.7b77c32b.css.map",
-    "main.d613a8cb.js.map": "/react-gh-pages/static/js/main.d613a8cb.js.map"
+    "main.css": "/brave-unicorn-challange/static/css/main.7b77c32b.css",
+    "main.js": "/brave-unicorn-challange/static/js/main.eb9f26e3.js",
+    "index.html": "/brave-unicorn-challange/index.html",
+    "main.7b77c32b.css.map": "/brave-unicorn-challange/static/css/main.7b77c32b.css.map",
+    "main.eb9f26e3.js.map": "/brave-unicorn-challange/static/js/main.eb9f26e3.js.map"
   },
   "entrypoints": [
     "static/css/main.7b77c32b.css",
-    "static/js/main.d613a8cb.js"
+    "static/js/main.eb9f26e3.js"
   ]
 }
